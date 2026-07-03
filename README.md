@@ -61,10 +61,15 @@ The project must not process or store:
 This repository is in an early initialization stage. It currently includes:
 
 - Project-level Codex instructions
-- Git ignore rules
+- Git ignore and line ending rules
 - An environment variable template
+- Product and scope documentation
+- Data policy documentation
+- A data directory guide
+- A YAML-only Lithos item template
+- A Lithos data source boundary document
 
-No documentation directory, data directory, frontend, backend, or demo is included at this stage.
+No business code, real data import, data extraction pipeline, embeddings, RAG, frontend, backend, deployment, or demo is included at this stage.
 
 ## Development Notes
 

@@ -15,7 +15,7 @@ Lithos Mind does not integrate with or import data from that repository in the c
 
 ## Why Lithos Is a Future Data Source
 
-Lithos work cards may provide structured, public-safe personal knowledge metadata relevant to learning, cultural collections, reading, and long-term interests. This makes their YAML frontmatter a possible future input for Lithos Mind after the data has been reviewed for public safety.
+Lithos work cards may provide structured personal knowledge metadata relevant to learning, cultural collections, reading, and long-term interests. In the current data source boundary, only YAML frontmatter is treated as the usable part of these work cards, while Markdown body content remains excluded.
 
 ## Current Stage Scope
 

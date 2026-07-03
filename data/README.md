@@ -6,7 +6,7 @@ The `data/` directory is intended for files related to Lithos Mind's future publ
 
 ## Current Stage
 
-During the **Project Initialization Phase**, the `data/` directory contains only this guide. The current phase does not include:
+During the **Project Initialization Phase**, the `data/` directory contains this guide and a minimal YAML-only template under `data/samples/`. The current phase does not include:
 
 - Real data ingestion.
 - Raw data storage.
@@ -63,4 +63,11 @@ See [`docs/data-policy.md`](../docs/data-policy.md) for the complete data bounda
 
 ## Current Repository Status
 
-The `data/` directory currently contains only `README.md`. No `samples/`, `user-provided/`, `raw/`, `cleaned/`, or `vector_db/` directories or real data files exist at this stage.
+The `data/` directory currently contains:
+
+- `README.md`
+- `samples/lithos-item-template.json`
+
+The `samples/` directory currently contains only a YAML-only template. It does not contain real or fictional sample records.
+
+No `user-provided/`, `raw/`, `cleaned/`, or `vector_db/` directories or real data files exist at this stage.
