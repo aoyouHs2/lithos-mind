@@ -17,12 +17,33 @@ category: reading
 tags:
   - literature
   - note
+custom_field: preserved
+rating: 4
 ---
 
-This Markdown body is outside the Stage 2 data boundary.
+This Markdown body should not be included.
 ```
 
-The parsed YAML value must be an object/dictionary. Empty frontmatter and top-level scalar or list values are rejected.
+The parsed YAML value must be an object/dictionary. Empty frontmatter and top-level scalar or list values are rejected. This is an input-shape requirement, not a metadata schema.
+
+## Extraction Boundary
+
+The extractor is intentionally schema-agnostic. It does not require specific YAML fields. All fields parsed from the YAML frontmatter are preserved as-is inside the `yaml` object, including custom or unknown fields.
+
+The extractor does not:
+
+- Remove extra fields.
+- Rename fields.
+- Clean or normalize field values.
+- Judge field values or metadata quality.
+- Determine whether metadata is useful or suitable for retrieval.
+
+The only current guarantees are:
+
+- YAML frontmatter is extracted.
+- Markdown body content is excluded.
+- Output follows the existing JSON wrapper structure.
+- `body_included` remains `false`.
 
 ## Usage
 
@@ -51,7 +72,9 @@ The script writes one JSON object to standard output:
     "tags": [
       "literature",
       "note"
-    ]
+    ],
+    "custom_field": "preserved",
+    "rating": 4
   },
   "body_included": false
 }
@@ -60,6 +83,32 @@ The script writes one JSON object to standard output:
 `body_included` is always `false`. The Markdown body is not parsed, cleaned, summarized, stored, or output.
 
 Invalid input produces a clear error on standard error and exits with a non-zero status. This includes a missing file, missing opening or closing frontmatter delimiters, malformed YAML, empty frontmatter, and frontmatter that does not parse into an object/dictionary.
+
+## Manual Verification
+
+Run the basic verification command:
+
+```bash
+python scripts/extract_lithos_yaml.py data/samples/lithos-sample-card.md
+```
+
+Verify that the extractor:
+
+- Outputs JSON to standard output.
+- Preserves all YAML frontmatter fields.
+- Preserves custom YAML fields.
+- Excludes Markdown body content.
+- Keeps `body_included` as `false`.
+- Returns clear errors for invalid inputs.
+
+Invalid inputs that should return errors include:
+
+- A missing file.
+- Missing YAML frontmatter.
+- A missing closing frontmatter delimiter.
+- Malformed YAML.
+- Empty YAML.
+- YAML with a top-level value that is not an object/dictionary.
 
 ## Current Limitations
 
