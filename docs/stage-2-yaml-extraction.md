@@ -115,3 +115,7 @@ Invalid inputs that should return errors include:
 This prototype processes one explicitly provided local file only. It is not a batch importer or repository scanner.
 
 Stage 2 does not provide a data cleaning pipeline, embedding system, vector database, RAG system, Agent answer generation, backend, frontend, API, or deployment configuration.
+
+## Stage 2 Closeout
+
+Stage 2 can be considered complete when the extractor behavior, extraction boundary, manual verification steps, and current limitations have been reviewed, committed, and pushed to the remote repository.
