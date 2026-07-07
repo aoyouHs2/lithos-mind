@@ -1,5 +1,10 @@
 # Stage 2: Minimal YAML Extraction Prototype
 
+## Status
+
+**Stage:** Stage 2: Minimal YAML Extraction Prototype  
+**Status:** Closed
+
 ## Purpose
 
 Stage 2 provides one minimal local script that reads a single Markdown file and extracts its YAML frontmatter. It verifies the YAML-only data boundary defined for Lithos work cards.
@@ -118,4 +123,4 @@ Stage 2 does not provide a data cleaning pipeline, embedding system, vector data
 
 ## Stage 2 Closeout
 
-Stage 2 can be considered complete when the extractor behavior, extraction boundary, manual verification steps, and current limitations have been reviewed, committed, and pushed to the remote repository.
+Stage 2 is considered closed after the extractor behavior, extraction boundary, manual verification steps, and current limitations were reviewed, committed, and pushed to the remote repository.

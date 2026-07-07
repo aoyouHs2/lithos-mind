@@ -1,78 +1,58 @@
 # Lithos Mind
 
-Lithos Mind is a public-data-first personal knowledge base Agent for managing, retrieving, and understanding public learning notes, reading records, cultural collections, and long-term interest data.
+Lithos Mind is a personal public-data knowledge base Agent project.
+
+It is built around the idea that a person's public-safe learning notes, reading records, cultural collections, and long-term interest data can gradually become a structured personal knowledge base.
+
+The project is currently under staged development. It is not yet a complete public demo or production-ready application.
+
+## Background
+
+As personal data accumulates over time, notes, reading records, collections, and reflections can become valuable knowledge assets.
+
+Lithos Mind explores how this kind of public-safe personal data can be organized, retrieved, cited, and eventually used to support Agent-based answers.
+
+This project is also an AI product management portfolio project. It focuses on product positioning, data boundary design, staged execution, and practical AI-assisted development.
 
 ## What This Project Is
 
-- A personal knowledge base Agent project
-- Built around public-safe personal data
-- Focused on learning, reading, cultural collections, and long-term interests
-- A long-term AI product management portfolio project
+Lithos Mind is intended to be:
+
+* A personal knowledge base Agent project.
+* A public-safe personal data project.
+* A staged AI product management project.
+* A long-term exploration of personal data, retrieval, source citation, and Agent interaction.
 
 ## What This Project Is Not
 
-- A work assistant
-- A PRD Agent
-- A Todo tool
-- A calendar or schedule manager
-- A private message or email assistant
-- A financial, medical, account, or credential management tool
+Lithos Mind is not:
 
-## Current Phase
+* A work assistant.
+* A PRD Agent.
+* A todo tool.
+* A calendar or schedule manager.
+* A private message or email assistant.
+* A financial, medical, account, or credential management tool.
+* A generic chatbot.
 
-Lithos Mind is currently in the **Project Initialization Phase**. This phase focuses only on:
+The project must not process private, sensitive, or unreviewed personal data.
 
-- Repository setup
-- Basic documentation
-- Data boundary definition
-- Sample data format planning
-- Environment configuration
+## Current Status
 
-Agent capabilities, retrieval-augmented generation (RAG), embeddings, a frontend, and deployment have not been implemented in this phase.
+This repository is still in active development.
 
-## Future V0 Direction
+The current focus is on defining project boundaries, organizing development documents, and building small, reviewable prototypes before moving toward larger Agent capabilities.
 
-The future V0 direction is to establish a minimal end-to-end flow:
+For the latest project state, see:
 
-`data import -> data cleaning -> structured storage -> retrieval -> agent answer -> source citation -> simple frontend -> public demo`
+* [`PROJECT_STATUS.md`](PROJECT_STATUS.md)
 
-This is a future V0 direction and is not implemented in the current phase.
+## Documentation
 
-## Data Boundary
+Current documentation is organized around project status, data boundaries, and V0 development planning:
 
-Lithos Mind is limited to public-safe personal data, such as:
+* [`PROJECT_STATUS.md`](PROJECT_STATUS.md): Current project state and AI collaboration context.
+* [`data/README.md`](data/README.md): Data rules, sample data policy, and current data boundary.
+* `docs-dev/v0/`: V0 planning and development-stage documents.
 
-- Public learning notes
-- Public reading records
-- Public cultural collections
-- Public long-term interest logs
-
-The project must not process or store:
-
-- Private messages
-- Emails
-- Financial records
-- Medical records
-- Account credentials
-- Sensitive personal data
-
-## Repository Status
-
-This repository is in an early initialization stage. It currently includes:
-
-- Project-level Codex instructions
-- Git ignore and line ending rules
-- An environment variable template
-- Product and scope documentation
-- Data policy documentation
-- A data directory guide
-- A YAML-only Lithos item template
-- A Lithos data source boundary document
-
-No business code, real data import, data extraction pipeline, embeddings, RAG, frontend, backend, deployment, or demo is included at this stage.
-
-## Development Notes
-
-- Official repository files should be written in English.
-- Local development can use Git commits as rollback points.
-- GitHub should be used to present reviewed and stable project milestones.
+The README will be expanded later when the project reaches a more complete demo or portfolio presentation stage.
