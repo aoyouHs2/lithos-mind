@@ -9,7 +9,7 @@ Stage 3 is a documentation-only stage. It is not complete until the project owne
 
 ## Purpose
 
-Stage 3 defines a text-first card record boundary for a future Agent database. Original Lithos Markdown cards remain the source of truth, while the future database is a derived, query-ready copy containing selected YAML metadata and Markdown body text.
+Stage 3 defines a complete text-first card record boundary for a future Agent database. Original Lithos Markdown cards remain the source of truth, while the future database is a derived, query-ready copy containing selected YAML metadata and Markdown body text.
 
 This stage also defines how a future Agent may query those records through controlled database-style operations. It does not implement card parsing, metadata normalization, a database, retrieval, or Agent behavior.
 
@@ -41,7 +41,7 @@ Stage 3 expands only the conceptual boundary for a future full-card record. It d
 
 Original `.md` card files remain the canonical source of truth. A future Agent database should contain derived, query-ready records rather than replace or become the canonical copy of those files.
 
-A future import or sync process should preserve `source_path` and `source_hash`, or equivalent traceability metadata, so records can be connected to source files and source changes can be detected. Stage 3 does not implement source hashing or synchronization.
+The database must not be treated as the canonical original. Each derived record should remain traceable to its source file through `source_path`.
 
 ## Current Implementation Boundary
 
@@ -55,9 +55,11 @@ The implemented boundary remains unchanged:
 
 Stage 3 does not parse, store, index, or otherwise process Markdown body text. It only defines how body text may be handled by a later implementation stage.
 
-## Agent-Facing Record Content
+## Complete Text-First Card Record Model
 
-A future text-first Agent record may include:
+A future Agent database should use a complete text-first card record model rather than a minimal query-only record. The derived record should preserve the card's useful text content for querying, answering, and citation instead of retaining only a few filter fields.
+
+A future record may include:
 
 | Record group | Conceptual fields |
 | --- | --- |
@@ -68,9 +70,29 @@ A future text-first Agent record may include:
 
 This is a conceptual field list, not a final database schema or a required YAML schema. Field availability may vary, and mapping, validation, naming, and normalization rules require a later implementation stage.
 
+## Agent-Facing YAML Fields
+
+The confirmed conceptual Agent-facing YAML fields are:
+
+- `type`
+- `title`
+- `original_title`
+- `year`
+- `tags`
+- `my_rating`
+- `date`
+- `repeat_dates`
+- `url`
+- `external_id`
+- `data_source`
+
+These fields are neither a required YAML schema nor a final database schema. A future implementation may map source YAML names such as `id` to `external_id` and `dataSource` to `data_source`, but Stage 3 does not implement any mapping.
+
 ## Markdown Body Text
 
-Future Agent records may store the Markdown body as `body_text`. Card bodies can contain the project owner's own short notes, which may support future retrieval, answering, and citation.
+Future Agent records may store the Markdown body as `body_text`. It should preserve the Markdown body content as-is while excluding YAML frontmatter. Markdown headings, dates, and note structure inside the body should remain preserved.
+
+Card bodies can contain the project owner's own short notes, which may support future retrieval, answering, and citation.
 
 Storing `body_text` is different from storing the entire raw Markdown file. The future record would keep the useful body text as an Agent-facing field while the original `.md` file remains canonical.
 
@@ -88,6 +110,16 @@ Storing full `raw_markdown` in the Agent database is not currently recommended. 
 
 For the current conceptual boundary, `source_path`, `source_hash`, `body_text`, and `raw_yaml_json` provide sufficient traceability and text content. Full raw Markdown storage may be reconsidered only if a later stage identifies a concrete need.
 
+## Source Path and Source Hash
+
+`source_path` identifies the original `.md` file from which a derived database record was created.
+
+`source_hash` is a future system-generated technical field. Users should not manually add it to source cards. A future import process may compute it from the original `.md` file content and store it in the derived Agent database record.
+
+During a future sync, the system may recompute the current file hash and compare it with the stored database hash. A changed hash indicates that the source file likely changed and that the derived record may need to be refreshed.
+
+Stage 3 does not implement hashing, import, refresh, or synchronization behavior.
+
 ## Image and Cover Boundary
 
 Image references such as `cover` are non-Agent metadata:
@@ -99,7 +131,7 @@ Image references such as `cover` are non-Agent metadata:
 - The Agent must not answer questions based on image content.
 - Display concerns remain outside the current Agent database scope.
 
-## Future Agent Query Boundary
+## Controlled Query Boundary
 
 A future Agent may identify a supported user intent. A controlled application layer should translate that intent into an allowlisted query operation with validated parameters and execute the database query. The Agent must not generate or execute free-form SQL.
 
@@ -137,11 +169,12 @@ Stage 3 also does not provide Agent answer generation. It only defines a possibl
 
 Stage 3 can be closed when:
 
-- The project owner approves the documentation-only scope, text-first card record boundary, and structured database-first direction.
+- The project owner approves the documentation-only scope, complete text-first card record boundary, and structured database-first direction.
 - Original `.md` cards are documented as the source of truth.
 - The distinction between the Stage 2 YAML-only extractor and a future full-card record is clear.
-- The conceptual Agent-facing fields are understandable without being treated as a final database or YAML schema.
-- Future `body_text` handling is documented without implementing Markdown body parsing.
+- The conceptual Agent-facing YAML fields are understandable without being treated as a final database or required YAML schema.
+- Future `body_text` handling preserves body content as-is while excluding YAML frontmatter, without implementing Markdown body parsing.
+- `source_hash` is documented as a future system-generated field for change detection, not a manually maintained source-card field.
 - The roles of `raw_yaml_json` and the original source file are explicit, and full `raw_markdown` is not required.
 - Image references remain outside Agent-facing query fields and may only be passively preserved through raw YAML.
 - Supported query intents and prohibited query behavior are documented.

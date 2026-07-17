@@ -165,11 +165,13 @@ Any future Markdown body parser must be defined and reviewed in a later implemen
 
 ## Future Text-First Record Direction
 
-Original `.md` cards remain the source of truth. A future Agent database may contain derived, query-ready text records built from selected YAML metadata and Markdown body text stored as `body_text`.
+Original `.md` cards remain the source of truth. A future Agent database may contain derived, query-ready complete text records built from selected YAML metadata and Markdown body text stored as `body_text`.
+
+Future `body_text` should preserve the Markdown body content as-is while excluding YAML frontmatter. Markdown headings, dates, and note structure inside the body should remain preserved.
 
 `raw_yaml_json` may preserve all original YAML metadata without making every YAML field an Agent-facing query field. Image references such as `cover` may remain passively preserved there, but they should not become normalized, indexed, searchable, or otherwise Agent-facing fields.
 
-Full `raw_markdown` storage is not currently required because the original file remains canonical. `source_path`, `source_hash`, `body_text`, and `raw_yaml_json` define the current conceptual traceability and text boundary.
+Full `raw_markdown` storage is not currently recommended because the original file remains canonical. `source_path`, `source_hash`, `body_text`, and `raw_yaml_json` define the current conceptual traceability and text boundary.
 
 This is a planned direction, not a current implementation. Stage 2 remains YAML-only, and there is no full-card parser, batch import, metadata normalization implementation, database, or vector database.
 
@@ -215,6 +217,8 @@ Future data records should preserve source information where possible, including
 * Visibility or public-safety status.
 
 Source traceability is important for future retrieval, citation, and review.
+
+`source_path` identifies the original `.md` file for a derived record. `source_hash` is not required in source cards and should not be added manually. A future import process may compute it from the source file content and store it in the derived record. A future sync may compare a recomputed file hash with the stored hash to detect whether the source likely changed. No hashing or sync behavior is implemented in Stage 3.
 
 ## Current Out of Scope
 
