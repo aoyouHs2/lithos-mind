@@ -10,7 +10,7 @@ This document defines:
 * What data is disallowed.
 * How sample data should be handled.
 * How Lithos work cards are treated as a future data source.
-* Why Markdown body content is currently excluded.
+* Why the Stage 2 extractor currently excludes Markdown body content.
 * What data-related work remains out of scope.
 
 Lithos Mind is a public-data-first personal knowledge base Agent project. The `data/` directory must remain safe to review on GitHub.
@@ -117,9 +117,7 @@ A Lithos work card may contain two parts:
 * YAML frontmatter.
 * Markdown body content.
 
-In the current data boundary, only YAML frontmatter is treated as usable input for Lithos Mind.
-
-Markdown body content remains excluded.
+In the current Stage 2 implementation, only YAML frontmatter is extracted. Markdown body content remains excluded from that extractor.
 
 Lithos Mind does not yet batch import or scan the full Lithos repository. Stage 2 only provides a minimal local extractor for one explicitly provided Markdown file.
 
@@ -157,19 +155,23 @@ It does not:
 * Determine whether metadata is useful for retrieval.
 * Process Markdown body content.
 
-## Markdown Body Exclusion
+## Current Markdown Body Exclusion
 
-Markdown body content must not be imported, indexed, embedded, summarized, cleaned, stored, or otherwise processed in the current data boundary.
+The Stage 2 extractor must not import, index, embed, summarize, clean, store, or otherwise process Markdown body content.
 
-This rule exists to keep the current prototype narrow and public-safe.
+This rule keeps the implemented prototype narrow and public-safe. It does not define the future Agent record boundary.
 
-Only YAML frontmatter is within the current Lithos data source boundary.
+Any future Markdown body parser must be defined and reviewed in a later implementation stage.
 
-## Future Structured Record Direction
+## Future Text-First Record Direction
 
-Future stages may prepare reviewed YAML metadata as normalized records for controlled, database-style querying. Any such record should remain traceable to its source and preserve the raw extracted YAML.
+Original `.md` cards remain the source of truth. A future Agent database may contain derived, query-ready text records built from selected YAML metadata and Markdown body text stored as `body_text`.
 
-This is a planned direction, not a current implementation. The current boundary remains YAML-only: Markdown body content is excluded, extraction is limited to one explicitly provided file, and there is no batch import, metadata normalization implementation, database, or vector database.
+`raw_yaml_json` may preserve all original YAML metadata without making every YAML field an Agent-facing query field. Image references such as `cover` may remain passively preserved there, but they should not become normalized, indexed, searchable, or otherwise Agent-facing fields.
+
+Full `raw_markdown` storage is not currently required because the original file remains canonical. `source_path`, `source_hash`, `body_text`, and `raw_yaml_json` define the current conceptual traceability and text boundary.
+
+This is a planned direction, not a current implementation. Stage 2 remains YAML-only, and there is no full-card parser, batch import, metadata normalization implementation, database, or vector database.
 
 ## Future Data Directory Possibilities
 
@@ -204,6 +206,7 @@ The project should not commit:
 Future data records should preserve source information where possible, including:
 
 * Source path.
+* Source hash or equivalent change-detection metadata.
 * Source name.
 * Source URL, if available.
 * Creation date or collection date, if available.
@@ -224,7 +227,7 @@ The current data boundary does not include:
 * Schema validation.
 * Required YAML fields.
 * Database implementation.
-* Markdown body processing.
+* Markdown body parsing or record preparation implementation.
 * Embedding generation.
 * Vector database creation.
 * Retrieval implementation.

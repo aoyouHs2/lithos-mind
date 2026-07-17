@@ -48,7 +48,7 @@ Current status:
 | ------- | ----------------------------------------------- | ----------------- | ---------------------------------------------------------------------------------- |
 | Stage 1 | Project Initialization                          | Closed            | Repository foundation and initial project boundaries completed.                    |
 | Stage 2 | Minimal YAML Extraction Prototype               | Closed            | Single-file YAML frontmatter extraction completed. Markdown body remains excluded. |
-| Stage 3 | Structured Record and Query Boundary Definition | Open (definition) | Documentation-only boundary definition; no database or query implementation.       |
+| Stage 3 | Structured Record and Query Boundary Definition | Open (definition) | Text-first card record and controlled query boundary; no implementation.            |
 
 The project is currently in the Stage 3 definition stage.
 
@@ -60,11 +60,11 @@ Use these documents for detailed context:
 
 * [`README.md`](README.md): concise project background, positioning, and boundaries.
 * [`AGENTS.md`](AGENTS.md): stable Codex repository execution guidance.
-* [`data/README.md`](data/README.md): data rules, sample data policy, Lithos data source boundary, YAML-only boundary, and Markdown body exclusion.
+* [`data/README.md`](data/README.md): data rules, Stage 2 YAML-only boundary, and future text-first record direction.
 * [`docs-dev/v0/scope.md`](docs-dev/v0/scope.md): future V0 scope boundary.
 * [`docs-dev/v0/stage-1-project-initialization.md`](docs-dev/v0/stage-1-project-initialization.md): Stage 1 closeout record.
 * [`docs-dev/v0/stage-2-yaml-extraction.md`](docs-dev/v0/stage-2-yaml-extraction.md): Stage 2 YAML extraction prototype, extraction boundary, and manual verification.
-* [`docs-dev/v0/stage-3-structured-record-query-boundary.md`](docs-dev/v0/stage-3-structured-record-query-boundary.md): Stage 3 structured record concepts and controlled query boundary.
+* [`docs-dev/v0/stage-3-structured-record-query-boundary.md`](docs-dev/v0/stage-3-structured-record-query-boundary.md): Stage 3 text-first card record and controlled query boundary.
 
 ---
 
@@ -134,7 +134,7 @@ For full data and extraction boundaries, see:
 
 Review and finalize the Stage 3 documentation before implementation begins.
 
-The review should confirm the conceptual record groups, raw-YAML preservation, structured database-first direction, and controlled future Agent query boundary.
+The review should confirm the text-first record fields, source-of-truth model, image exclusion, and controlled future Agent query boundary.
 
 ---
 
@@ -150,7 +150,7 @@ The project should not currently add:
 * Required YAML fields.
 * Database implementation.
 * Query implementation.
-* Markdown body processing.
+* Markdown body parsing or record preparation implementation.
 * Embedding.
 * Vector database.
 * RAG.
@@ -175,8 +175,12 @@ Recent project decisions:
 * `AGENTS.md` defines stable Codex execution rules.
 * `PROJECT_STATUS.md` should act as a lightweight project status index and AI handoff document.
 * Detailed V0, data, and stage-specific information should remain in the dedicated documents listed above.
-* Structured database-style querying is prioritized before vector retrieval because the current source boundary is YAML metadata.
+* Structured database-style querying is prioritized before vector retrieval for selected metadata and short card notes.
 * Vector retrieval may be considered later if larger unstructured text or semantic-search needs are introduced.
+* Original `.md` cards remain the source of truth; future Agent database records are derived text-first copies.
+* Future records may include selected YAML metadata, Markdown `body_text`, and `raw_yaml_json` for metadata preservation.
+* Full `raw_markdown` storage is not currently recommended.
+* Image references such as `cover` are not Agent-facing fields and may only remain passively preserved in `raw_yaml_json`.
 * Stage 3 documentation must be reviewed and finalized before implementation begins.
 
 ---
