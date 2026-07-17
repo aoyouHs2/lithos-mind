@@ -3,9 +3,9 @@
 ## Status
 
 - **Stage:** Stage 3: Structured Record and Query Boundary Definition
-- **Status:** Open — definition stage
+- **Status:** Closed
 
-Stage 3 is a documentation-only stage. It is not complete until the project owner reviews and approves the record and query boundaries defined here.
+Stage 3 was a documentation-only definition stage. It is closed after the project owner reviewed and approved the record and query boundaries defined here.
 
 ## Purpose
 
@@ -167,7 +167,7 @@ Stage 3 also does not provide Agent answer generation. It only defines a possibl
 
 ## Acceptance Criteria
 
-Stage 3 can be closed when:
+Stage 3 was closed after these criteria were met:
 
 - The project owner approves the documentation-only scope, complete text-first card record boundary, and structured database-first direction.
 - Original `.md` cards are documented as the source of truth.
@@ -201,3 +201,15 @@ Stage 3 does not include:
 - Private or sensitive data processing.
 
 Any implementation work must be proposed and reviewed as a separate later stage.
+
+## Stage 3 Closeout
+
+Stage 3 is closed after the project owner approved:
+
+- A complete text-first card record model with original `.md` cards as the source of truth and derived Agent database records as query-ready text copies.
+- Markdown `body_text` preserved as-is without YAML frontmatter, selected YAML metadata as conceptual Agent-facing fields, and `raw_yaml_json` for complete YAML metadata preservation.
+- Full `raw_markdown` not currently recommended and image references excluded from Agent-facing fields.
+- `source_path` and a future system-generated `source_hash` for traceability and change detection.
+- A structured database-first direction before vector retrieval and a controlled future Agent query boundary.
+
+Stage 3 did not implement a database, parser, Markdown body extraction, hashing, synchronization, query execution, Agent answer generation, vector retrieval, frontend, backend, API, or deployment.
