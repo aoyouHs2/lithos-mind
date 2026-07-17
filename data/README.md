@@ -165,6 +165,12 @@ This rule exists to keep the current prototype narrow and public-safe.
 
 Only YAML frontmatter is within the current Lithos data source boundary.
 
+## Future Structured Record Direction
+
+Future stages may prepare reviewed YAML metadata as normalized records for controlled, database-style querying. Any such record should remain traceable to its source and preserve the raw extracted YAML.
+
+This is a planned direction, not a current implementation. The current boundary remains YAML-only: Markdown body content is excluded, extraction is limited to one explicitly provided file, and there is no batch import, metadata normalization implementation, database, or vector database.
+
 ## Future Data Directory Possibilities
 
 Future stages may introduce additional local data directories, such as:
@@ -217,6 +223,7 @@ The current data boundary does not include:
 * Metadata normalization.
 * Schema validation.
 * Required YAML fields.
+* Database implementation.
 * Markdown body processing.
 * Embedding generation.
 * Vector database creation.

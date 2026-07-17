@@ -39,20 +39,18 @@ Current stage model:
 ```text
 Stage 1: Project Initialization
 Stage 2: Minimal YAML Extraction Prototype
-Stage 3: To be defined
+Stage 3: Structured Record and Query Boundary Definition
 ```
 
 Current status:
 
-| Stage   | Name                              | Status      | Notes                                                                              |
-| ------- | --------------------------------- | ----------- | ---------------------------------------------------------------------------------- |
-| Stage 1 | Project Initialization            | Closed      | Repository foundation and initial project boundaries completed.                    |
-| Stage 2 | Minimal YAML Extraction Prototype | Closed      | Single-file YAML frontmatter extraction completed. Markdown body remains excluded. |
-| Stage 3 | To be defined                     | Not started | Define the next stage before implementation begins.                                |
+| Stage   | Name                                            | Status            | Notes                                                                              |
+| ------- | ----------------------------------------------- | ----------------- | ---------------------------------------------------------------------------------- |
+| Stage 1 | Project Initialization                          | Closed            | Repository foundation and initial project boundaries completed.                    |
+| Stage 2 | Minimal YAML Extraction Prototype               | Closed            | Single-file YAML frontmatter extraction completed. Markdown body remains excluded. |
+| Stage 3 | Structured Record and Query Boundary Definition | Open (definition) | Documentation-only boundary definition; no database or query implementation.       |
 
-The project is currently between Stage 2 and Stage 3.
-
-Stage 3 has not been defined yet.
+The project is currently in the Stage 3 definition stage.
 
 ---
 
@@ -66,6 +64,7 @@ Use these documents for detailed context:
 * [`docs-dev/v0/scope.md`](docs-dev/v0/scope.md): future V0 scope boundary.
 * [`docs-dev/v0/stage-1-project-initialization.md`](docs-dev/v0/stage-1-project-initialization.md): Stage 1 closeout record.
 * [`docs-dev/v0/stage-2-yaml-extraction.md`](docs-dev/v0/stage-2-yaml-extraction.md): Stage 2 YAML extraction prototype, extraction boundary, and manual verification.
+* [`docs-dev/v0/stage-3-structured-record-query-boundary.md`](docs-dev/v0/stage-3-structured-record-query-boundary.md): Stage 3 structured record concepts and controlled query boundary.
 
 ---
 
@@ -133,18 +132,9 @@ For full data and extraction boundaries, see:
 
 ## Next Recommended Step
 
-The next recommended step is to define Stage 3 before implementation begins.
+Review and finalize the Stage 3 documentation before implementation begins.
 
-Stage 3 should not be assumed automatically.
-
-Possible Stage 3 directions may include:
-
-* Preparing a small public-safe sample dataset.
-* Defining a minimal local data normalization boundary.
-* Designing how extracted YAML records should become reviewable local data objects.
-* Deciding whether Lithos-only data should come before Obsidian or other notes.
-
-Do not start implementation before Stage 3 is explicitly scoped.
+The review should confirm the conceptual record groups, raw-YAML preservation, structured database-first direction, and controlled future Agent query boundary.
 
 ---
 
@@ -155,9 +145,11 @@ The project should not currently add:
 * Batch import.
 * Full Lithos repository scanning.
 * Data cleaning pipeline.
-* Metadata normalization.
+* Metadata normalization implementation.
 * Schema validation.
 * Required YAML fields.
+* Database implementation.
+* Query implementation.
 * Markdown body processing.
 * Embedding.
 * Vector database.
@@ -183,7 +175,9 @@ Recent project decisions:
 * `AGENTS.md` defines stable Codex execution rules.
 * `PROJECT_STATUS.md` should act as a lightweight project status index and AI handoff document.
 * Detailed V0, data, and stage-specific information should remain in the dedicated documents listed above.
-* Stage 3 must be defined before any new implementation work begins.
+* Structured database-style querying is prioritized before vector retrieval because the current source boundary is YAML metadata.
+* Vector retrieval may be considered later if larger unstructured text or semantic-search needs are introduced.
+* Stage 3 documentation must be reviewed and finalized before implementation begins.
 
 ---
 
